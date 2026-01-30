@@ -17,7 +17,7 @@ class Calculator:
         if self.__is_valid_number(a) and self.__is_valid_number(b):
             return a * b
         else:
-            print("ERROR: Please input either a integer or a float")
+            print("ERROR: Please input either an integer or a float")
             return None
     
     def power(self, base, exponent):
@@ -30,13 +30,17 @@ class Calculator:
     def factorial(self, n):
         factorial_value = 1
 
-        if n == 0:
-            return 1
-        elif n >= 0:
-            for i in range(n, 0, -1):
-                factorial_value *= i
+        if self.__is_valid_number(n) and type(n) == int:
+            if n == 0:
+                return 1
+            elif n >= 0:
+                for i in range(n, 0, -1):
+                    factorial_value *= i
+            else:
+                print("ERROR: Please input a positive integer")
+                return None
         else:
-            print("ERROR: Please input a positive integer")
+            print("ERROR: Please input a valid integer")
             return None
 
         return factorial_value
@@ -54,15 +58,3 @@ class Calculator:
             total *= base
 
         return total
-
-            
-
-my_calc = Calculator()
-
-print(my_calc.add("a", 3))
-# print(my_calc.subtract(10, 6))
-# print(my_calc.multiply(23, 100))
-# print(my_calc.power(3, 5))
-# print(my_calc.factorial(-1))
-# print(my_calc._factorial_numbers(True))
-# print(my_calc._multiply_repeatedly(2, 3))
